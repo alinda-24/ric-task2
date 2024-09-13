@@ -19,6 +19,10 @@ on:
         required: true
         default: 'English'
 
+permissions:  
+  contents: write
+  pull-requests: write
+
 jobs:
   generate-task:
     uses: alinda-24/task2/.github/workflows/reusable-workflow.yml@main
