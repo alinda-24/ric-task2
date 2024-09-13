@@ -1,0 +1,28 @@
+name: Generate Task Using Reusable Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      theme:
+        description: 'Theme for the new task'
+        required: true
+        default: 'Create a simple game application that includes the following functionalities...'
+      difficulty:
+        description: 'Difficulty level for the new task'
+        required: true
+        type: choice
+        options:
+          - medium
+        default: medium
+      language:
+        description: 'Language for the task description'
+        required: true
+        default: 'English'
+
+jobs:
+  generate-task:
+    uses: alinda-24/task2/.github/workflows/reusable-workflow.yml@main
+    with:
+      theme: ${{ github.event.inputs.theme }}
+      difficulty: ${{ github.event.inputs.difficulty }}
+      language: ${{ github.event.inputs.language }}
